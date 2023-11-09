@@ -18,7 +18,10 @@ def create(request):
         # 두 번째 인자에 POST정보 넣기
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            # 현재 유저
+            post.user = request.user
+            post.save()
             return redirect('posts:index')
     else:
         form = PostForm()
