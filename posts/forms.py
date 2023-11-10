@@ -6,4 +6,4 @@ class PostForm(forms.ModelForm):
         model = Post
         # fields = '__all__'
         # 제외시키기
-        exclude = ('user',)
+        exclude = ('user','likesusers',)
